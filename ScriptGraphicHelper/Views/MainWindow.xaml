@@ -1,0 +1,148 @@
+<Window
+    x:Class="ScriptGraphicHelper.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Panels="clr-namespace:ScriptGraphicHelper.Panels;assembly=ScriptGraphicHelper"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="using:Avalonia.Xaml.Interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
+    xmlns:vm="using:ScriptGraphicHelper.ViewModels"
+    Title="图色助手 For Mac"
+    Width="{Binding WindowWidth, Mode=TwoWay}"
+    Height="{Binding WindowHeight, Mode=TwoWay}"
+    CanResize="True"
+    Closing="Window_Closing"
+    Cursor="{Binding WindowCursor, Mode=TwoWay}"
+    DragDrop.AllowDrop="True"
+    FontSize="14"
+    FontStyle="Normal"
+    Icon="/assets/ico.ico"
+    WindowStartupLocation="CenterScreen"
+    TransparencyLevelHint="AcrylicBlur"
+    ExtendClientAreaToDecorationsHint="True"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+  <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+        <ExperimentalAcrylicBorder.Material>
+            <ExperimentalAcrylicMaterial
+                BackgroundSource="Digger"
+                TintColor="Black"
+                TintOpacity="1"
+                MaterialOpacity="0.6" />
+        </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+    <!-- 左上右下 -->
+<!-- 面板内容 left colorInfo -->
+<!-- 面板内容 center Img -->
+<!-- 面板内容 right Control -->
+    <Border
+    Margin="0,30,0,0"
+    BorderBrush="#555"
+    BorderThickness="0,1,0,0">
+        <Grid>
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="{Binding ResetEmulatorOptions_Click}" Header="重置模式选择" />
+                    <MenuItem Command="{Binding Key_GetClipboardData}" Header="导入图片或数据" />
+                    <MenuItem Command="{Binding Key_SetConfig}" Header="打开配置" />
+                    <MenuItem Command="{Binding Key_ColorInfo_Clear}" Header="清空列表" />
+                    <MenuItem
+                        Command="{Binding Key_ScaleFactorChanged}"
+                        CommandParameter="Tab"
+                        Header="缩放图片" />
+                </ContextMenu>
+            </Grid.ContextMenu>
+            <Panels:ColorInfos
+                Margin="0,0,0,0"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Left" />
+            <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <Panels:TitleBar VerticalAlignment="Top" HorizontalAlignment="Left" PointerPressed="TitleBar_DragMove" />
+                <Panels:Img Margin="{Binding ImgMargin, Mode=TwoWay}" VerticalAlignment="Top" HorizontalAlignment="Left" /> 
+            </Grid>
+            <Panels:Controls
+                Margin="0,0,0,0"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Right" />
+            <Canvas>
+                <Rectangle
+                    Name="SelectRect"
+                    Width="{Binding RectWidth, Mode=TwoWay}"
+                    Height="{Binding RectHeight, Mode=TwoWay}"
+                    Margin="{Binding RectMargin, Mode=TwoWay}"
+                    Fill="Transparent"
+                    Focusable="False"
+                    IsVisible="{Binding Rect_IsVisible, Mode=TwoWay}"
+                    Stroke="Red"
+                    StrokeThickness="2" />
+            </Canvas>
+            <Canvas>
+                <Polyline 
+                    Points="{Binding RectBoxPoint}"
+                    IsVisible="{Binding RectBox_IsVisible, Mode=TwoWay}" 
+                    StrokeThickness="2" 
+                    Stroke="Red" />
+            </Canvas>
+
+            <StackPanel
+                x:Name="Panel_Loupe"
+                Margin="{Binding LoupeMargin, Mode=TwoWay}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                IsEnabled="False"
+                IsVisible="{Binding Loupe_IsVisible, Mode=TwoWay}">
+                <Image
+                    x:Name="Loupe"
+                    Width="241"
+                    Height="241"
+                    Source="{Binding LoupeWriteBmp}"
+                    Stretch="UniformToFill" />
+                <StackPanel
+                    Width="241"
+                    Background="#666666"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="5,3,0,8"
+                        FontSize="18"
+                        Foreground="#bbbbbb">
+                        x
+                    </TextBlock>
+                    <TextBlock
+                        Width="40"
+                        Margin="8,8,0,8"
+                        FontSize="14"
+                        Text="{Binding PointX, Mode=TwoWay}" />
+                    <TextBlock
+                        Margin="5,3,0,8"
+                        FontSize="18"
+                        Foreground="#bbbbbb">
+                        y
+                    </TextBlock>
+                    <TextBlock
+                        Width="40"
+                        Margin="8,8,0,8"
+                        FontSize="14"
+                        Text="{Binding PointY, Mode=TwoWay}" />
+                    <TextBlock
+                        Margin="10,3,0,8"
+                        FontSize="18"
+                        Foreground="#bbbbbb">
+                        c
+                    </TextBlock>
+                    <TextBlock
+                        Width="80"
+                        Margin="8,8,0,8"
+                        FontSize="14"
+                        Text="{Binding PointColor, Mode=TwoWay}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+  </Panel>
+
+</Window>
+

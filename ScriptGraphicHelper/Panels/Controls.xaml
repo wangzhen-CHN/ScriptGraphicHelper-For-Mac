@@ -1,0 +1,341 @@
+<UserControl
+    x:Class="ScriptGraphicHelper.Panels.Controls"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cv="using:ScriptGraphicHelper.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="using:Avalonia.Xaml.Interactivity"
+    xmlns:ic="using:Avalonia.Xaml.Interactions.Core"
+    xmlns:icc="using:ScriptGraphicHelper.ViewModels.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
+    Height="{Binding WindowHeight}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <cv:ScaleFactorConverter x:Key="ScaleFactor" />
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Background" Value="#666666" />
+        </Style>
+        <Style Selector="Button /template/ ContentPresenter">
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+    </UserControl.Styles>
+    <Panel>
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    BackgroundSource="Digger"
+                    TintColor="Black"
+                    TintOpacity="1"
+                    MaterialOpacity="0.7" />
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+    <!-- Margin="25,0,0,0"  左上右下 -->
+        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                Margin="20 10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Orientation="Vertical">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0,0,0,8"
+                    ToolTip.Tip="模式配置">
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Source>
+                            <svg:SvgImage Source="/assets/mode.svg" />
+                        </Image.Source>
+                    </Image>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="数据源" />
+                    <Border
+                        Margin="9,0"
+                        BorderBrush="#666666"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="0">
+                        <ComboBox
+                            Name="EmulatorOptions"
+                            Width="95"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="14"
+                            Items="{Binding EmulatorInfo, Mode=TwoWay}"
+                            SelectedIndex="{Binding EmulatorSelectedIndex, Mode=TwoWay}">
+                            <i:Interaction.Behaviors>
+                                <ic:EventTriggerBehavior EventName="Tapped">
+                                    <icc:InvokeCommandAction Command="{Binding GetList}" />
+                                </ic:EventTriggerBehavior>
+                            </i:Interaction.Behaviors>
+                        </ComboBox>
+                    </Border>
+                </StackPanel>
+                <Button
+                    Name="ScreenShot"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    BorderBrush="#666666"
+                    Command="{Binding ScreenShot_Click}">
+                    截图
+                </Button>
+                <Button
+                    Name="Load"
+                    Width="170"
+                    Margin="0,6"
+                    Cursor="Hand"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding Load_Click}">
+                    导入
+                </Button>
+                <Button
+                    Name="Save"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding Save_Click}">
+                    保存
+                </Button>
+                <Button
+                    Name="TurnRight"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding TurnRight_Click}">
+                    旋转
+                </Button>
+                <Button
+                    Name="Test"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding Test_Click}">
+                    测试
+                </Button>
+                <StackPanel
+                    Margin="0,6"
+                    Orientation="Horizontal"
+                    ToolTip.Tip="相似度">
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Source>
+                            <svg:SvgImage Source="/assets/sim.svg" />
+                        </Image.Source>
+                    </Image>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="相似度" />
+                    <Border
+                        Margin="9,0"
+                        BorderBrush="#666666"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="0">
+                        <ComboBox
+                            Name="Sim"
+                            Width="95"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="14"
+                            SelectedIndex="{Binding SimSelectedIndex, Mode=TwoWay}">
+                            <ComboBoxItem>100%</ComboBoxItem>
+                            <ComboBoxItem>95%</ComboBoxItem>
+                            <ComboBoxItem>90%</ComboBoxItem>
+                            <ComboBoxItem>85%</ComboBoxItem>
+                            <ComboBoxItem>80%</ComboBoxItem>
+                            <ComboBoxItem>自定义</ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                    Margin="0,6"
+                    Orientation="Horizontal"
+                    ToolTip.Tip="测试结果">
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Source>
+                            <svg:SvgImage Source="/assets/test.svg" />
+                        </Image.Source>
+                    </Image>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="测 试" />
+                    <Border
+                        Margin="9,0"
+                        BorderBrush="#666666"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="0">
+                        <TextBox
+                            Name="TestResult"
+                            Width="95"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="14"
+                            IsReadOnly="True"
+                            Text="{Binding TestResult, Mode=TwoWay}" />
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                    Margin="0,6"
+                    Orientation="Horizontal"
+                    ToolTip.Tip="生成格式">
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Source>
+                            <svg:SvgImage Source="/assets/format.svg" />
+                        </Image.Source>
+                    </Image>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="格 式" />
+                    <Border
+                        Margin="9,0"
+                        BorderBrush="#666666"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="0">
+                        <ComboBox
+                            x:Name="Format"
+                            Width="95"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="14"
+                            Items="{Binding FormatItems}"
+                            SelectedIndex="{Binding FormatSelectedIndex, Mode=TwoWay}" />
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                    Margin="0,6"
+                    Orientation="Horizontal"
+                    ToolTip.Tip="缩放系数">
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Source>
+                            <svg:SvgImage Source="/assets/microscope.svg" />
+                        </Image.Source>
+                    </Image>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="缩 放" />
+                    <Border
+                        Margin="9,0"
+                        BorderBrush="#666666"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="0">
+                        <ComboBox
+                            Width="95"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="14"
+                            SelectedIndex="{Binding ScaleFactor, Mode=TwoWay, Converter={StaticResource ScaleFactor}}">
+                            <ComboBoxItem>30%</ComboBoxItem>
+                            <ComboBoxItem>40%</ComboBoxItem>
+                            <ComboBoxItem>50%</ComboBoxItem>
+                            <ComboBoxItem>60%</ComboBoxItem>
+                            <ComboBoxItem>70%</ComboBoxItem>
+                            <ComboBoxItem>80%</ComboBoxItem>
+                            <ComboBoxItem>90%</ComboBoxItem>
+                            <ComboBoxItem>100%</ComboBoxItem>
+                            <ComboBoxItem>120%</ComboBoxItem>
+                            <ComboBoxItem>140%</ComboBoxItem>
+                            <ComboBoxItem>160%</ComboBoxItem>
+                            <ComboBoxItem>180%</ComboBoxItem>
+                            <ComboBoxItem>200%</ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                    Margin="0,6"
+                    Orientation="Horizontal"
+                    ToolTip.Tip="框选范围">
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Source>
+                            <svg:SvgImage Source="/assets/rect.svg" />
+                        </Image.Source>
+                    </Image>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="范 围" />
+                    <Border
+                        Margin="9,0"
+                        BorderBrush="#666666"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="0">
+                        <TextBox
+                            Name="Rect"
+                            Width="95"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="14"
+                            Text="{Binding Rect, Mode=TwoWay}">
+                        </TextBox>
+                    </Border>
+                </StackPanel>
+                <Button
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,10,0,7"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding CutImg_Click}">
+                    裁剪
+                </Button>
+                <Button
+                    Name="Create"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,10,0,7"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding Create_Click}">
+                    生成
+                </Button>
+                <TextBox
+                    Name="CreateStr"
+                    Width="170"
+                    Height="120"
+                    Margin="0,10,0,10"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Top"
+                    AcceptsReturn="True"
+                    Background="Transparent"
+                    BorderBrush="#666666"
+                    IsReadOnly="True"
+                    Text="{Binding CreateStr, Mode=TwoWay}"
+                    TextWrapping="Wrap"
+                    ToolTip.Tip="生成字符串" />
+                <Button
+                    Name="CreateStrCopy"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding CreateStr_Copy_Click}">
+                    复制
+                </Button>
+                <Button
+                    Name="CreateStrClear"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding Clear_Click}">
+                    清空
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Panel>
+</UserControl>
