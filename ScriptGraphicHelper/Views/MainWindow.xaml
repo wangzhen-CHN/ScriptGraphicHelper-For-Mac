@@ -33,7 +33,7 @@
                 BackgroundSource="Digger"
                 TintColor="Black"
                 TintOpacity="1"
-                MaterialOpacity="0.6" />
+                MaterialOpacity="0.7" />
         </ExperimentalAcrylicBorder.Material>
     </ExperimentalAcrylicBorder>
     <!-- 左上右下 -->

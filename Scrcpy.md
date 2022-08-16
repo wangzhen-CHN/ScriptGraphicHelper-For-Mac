@@ -3,8 +3,6 @@
 
 # scrcpy (v1.22)
 
-
-
 本应用程序可以显示并控制通过 USB (或 [TCP/IP][article-tcpip]) 连接的安卓设备，且不需要任何 _root_ 权限。本程序支持 _GNU/Linux_, _Windows_ 和 _macOS_。
 
 
