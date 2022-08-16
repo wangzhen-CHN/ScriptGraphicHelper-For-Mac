@@ -4,7 +4,7 @@
 
 **在yiszza/ScriptGraphicHelper 1.4 基础上进行优化改造，更好的适配mac端**
 
-**只支持autojs方式链接**
+> 只支持autojs方式链接
 
 <br/>
 <img src="./eg.jpg" height="600" alt="scrcpy" />
