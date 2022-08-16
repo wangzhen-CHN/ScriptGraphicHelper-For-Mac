@@ -9,6 +9,7 @@
     Icon="/assets/ico.ico"
     KeyDown="Window_KeyDown"
     Title="信息"
+    CornerRadius="3"
     Opened="Window_Opened"
     PropertyChanged="Window_PropertyChanged"
     SizeToContent="WidthAndHeight"

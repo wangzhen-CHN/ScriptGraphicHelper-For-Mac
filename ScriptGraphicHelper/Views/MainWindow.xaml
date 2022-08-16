@@ -16,6 +16,7 @@
     Cursor="{Binding WindowCursor, Mode=TwoWay}"
     DragDrop.AllowDrop="True"
     FontSize="14"
+    CornerRadius="3"
     FontStyle="Normal"
     Icon="/assets/ico.ico"
     WindowStartupLocation="CenterScreen"
