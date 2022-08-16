@@ -48,9 +48,9 @@ namespace ScriptGraphicHelper.Views
             this.Title = title;
             this.Message = msg;
 
-            this.ExtendClientAreaToDecorationsHint = true;
-            this.ExtendClientAreaTitleBarHeightHint = -1;
-            this.ExtendClientAreaChromeHints = Avalonia.Platform.ExtendClientAreaChromeHints.NoChrome;
+            // this.ExtendClientAreaToDecorationsHint = true;
+            // this.ExtendClientAreaTitleBarHeightHint = -1;
+            // this.ExtendClientAreaChromeHints = Avalonia.Platform.ExtendClientAreaChromeHints.NoChrome;
         }
 
         public MessageBox(string msg) : this("信息", msg) { }
@@ -58,8 +58,6 @@ namespace ScriptGraphicHelper.Views
 
         private void Window_Opened(object sender, EventArgs e)
         {
-            var title = this.FindControl<TextBlock>("Title");
-            title.Text = this.Title;
             var tb = this.FindControl<TextBlock>("Message");
             tb.Text = this.Message;
 
@@ -69,9 +67,13 @@ namespace ScriptGraphicHelper.Views
             tb.MaxWidth = this.MaxWidth - 100;
         }
 
-        private async void Close_Tapped(object sender, RoutedEventArgs e)
+        private async void Copy_Close_Tapped(object sender, RoutedEventArgs e)
         {
             await Application.Current.Clipboard.SetTextAsync(this.Message);
+            Close();
+        }
+        private async void Close_Tapped(object sender, RoutedEventArgs e)
+        {
             Close();
         }
 
