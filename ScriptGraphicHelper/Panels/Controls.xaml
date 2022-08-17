@@ -243,6 +243,7 @@
                             FontSize="14"
                             SelectedIndex="{Binding ScaleFactor, Mode=TwoWay, Converter={StaticResource ScaleFactor}}">
                             <ComboBoxItem>30%</ComboBoxItem>
+                            <ComboBoxItem>35%</ComboBoxItem>
                             <ComboBoxItem>40%</ComboBoxItem>
                             <ComboBoxItem>50%</ComboBoxItem>
                             <ComboBoxItem>60%</ComboBoxItem>

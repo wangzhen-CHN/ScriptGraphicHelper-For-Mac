@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
     xmlns:vm="using:ScriptGraphicHelper.ViewModels"
-    Title="图色助手 For Mac"
+    Title="ScriptGraphicHelper For Mac"
     Width="{Binding WindowWidth, Mode=TwoWay}"
     Height="{Binding WindowHeight, Mode=TwoWay}"
     CanResize="True"

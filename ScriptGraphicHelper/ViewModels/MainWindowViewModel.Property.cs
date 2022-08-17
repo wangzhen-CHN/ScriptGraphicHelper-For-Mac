@@ -183,7 +183,7 @@ namespace ScriptGraphicHelper.ViewModels
             set => this.RaiseAndSetIfChanged(ref this.imgDrawHeight, value);
         }
 
-        private double scaleFactor = 1.0;
+        private double scaleFactor = 0.4;
         public double ScaleFactor
         {
             get => this.scaleFactor;
