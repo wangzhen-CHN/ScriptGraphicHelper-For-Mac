@@ -43,7 +43,6 @@ namespace ScriptGraphicHelper.ViewModels
             set
             {
                 this.RaiseAndSetIfChanged(ref this.emulatorSelectedIndex, value);
-                Emulator_Selected(value);
             }
         }
 
@@ -84,6 +83,13 @@ namespace ScriptGraphicHelper.ViewModels
         {
             get => this.emulatorInfo;
             set => this.RaiseAndSetIfChanged(ref this.emulatorInfo, value);
+        }
+
+        private ObservableCollection<string> deviceInfo;
+        public ObservableCollection<string> DeviceInfo
+        {
+            get => this.deviceInfo;
+            set => this.RaiseAndSetIfChanged(ref this.deviceInfo, value);
         }
 
         private int titleBarWidth;

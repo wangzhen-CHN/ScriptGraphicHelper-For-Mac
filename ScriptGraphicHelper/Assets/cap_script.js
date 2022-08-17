@@ -46,9 +46,9 @@ function makePackData(key, desc, buffer) {
 events.on("send", function (remoteIP) {
     let socket;
     let stream;
-    log("1111");
     try {
         let img = images.captureScreen();
+        log("执行截图");
         socket = new Socket(remoteIP, 5678);
         stream = socket.getOutputStream();
         if (img != null) {
@@ -62,6 +62,8 @@ events.on("send", function (remoteIP) {
         }
     }
     catch (error) {
+        var data = makePackData("screenShot_failed", "获取截图权限失败!", null);
+        stream.write(data);
         console.log(error);
     }
     finally {

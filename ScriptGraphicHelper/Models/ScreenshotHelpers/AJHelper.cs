@@ -204,7 +204,6 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                     var stream = client.GetStream();
 
                     var data = await Stick.ReadPackAsync(stream);
-
                     if (data.Key == "screenShot_successed")
                     {
                         var sKBitmap = SKBitmap.Decode(data.Buffer);
@@ -227,10 +226,8 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                 }
                 finally
                 {
-                    if (this.server.Server.Connected)
-                    {
-                        this.server?.BeginAcceptTcpClient(new AsyncCallback(ConnectCallback), this.server);
-                    }
+                    //回调
+                     this.server.BeginAcceptTcpClient(new AsyncCallback(ConnectCallback), this.server);
                     
                 }
             }

@@ -9,6 +9,7 @@
     Icon="/assets/ico.ico"
     KeyDown="Window_KeyDown"
     Title="信息"
+    MinWidth="350"
     CornerRadius="3"
     Opened="Window_Opened"
     PropertyChanged="Window_PropertyChanged"
@@ -38,7 +39,7 @@
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             Content="确认"
-            Cursor="hand"
+            Cursor="Hand"
             CornerRadius="3"
             Foreground="#f1f1f1"
             Tapped="Close_Tapped">

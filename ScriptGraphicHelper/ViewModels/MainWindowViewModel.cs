@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Input;
 using Image = Avalonia.Controls.Image;
 using Point = Avalonia.Point;
@@ -227,21 +228,35 @@ namespace ScriptGraphicHelper.ViewModels
             }
         });
 
+        public async void getList(int index) {
+            if (index != -1)
+            {
+                var list = await ScreenshotHelperBridge.Helpers[index].GetList();
+                var temp = new ObservableCollection<string>();
+                foreach (var item in list)
+                {
+                    temp.Add(item.Value);
+                }
+                ScreenshotHelperBridge.Info = list;
+                this.EmulatorInfo = temp;
+            }
+        }
+
         public async void Emulator_Selected(int value)
         {
             try
-            {
-                if (ScreenshotHelperBridge.State == LinkState.success)
-                {
-                    ScreenshotHelperBridge.Index = value;
-                }
-                else if (ScreenshotHelperBridge.State == LinkState.Waiting)
+            {  
+                //链接设备
+                if (ScreenshotHelperBridge.State == LinkState.Waiting)
                 {
                     this.WindowCursor = new Cursor(StandardCursorType.Wait);
                     ScreenshotHelperBridge.Changed(value);
-                    this.EmulatorInfo = await ScreenshotHelperBridge.Initialize();
-                    this.EmulatorSelectedIndex = -1;
-
+                    // 获取设备列表
+                    this.DeviceInfo = await ScreenshotHelperBridge.Initialize();
+                    this.getList(0);
+                    // 选择设备
+                    this.Device_Selected(0);
+                    ScreenshotHelperBridge.Select=0;
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnSuccessed = new Action<Bitmap>((bitmap) =>
                     {
                         Dispatcher.UIThread.InvokeAsync(() =>
@@ -257,6 +272,7 @@ namespace ScriptGraphicHelper.ViewModels
                             this.TabControlSelectedIndex = this.TabItems.Count - 1;
                             this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                         });
+                        
                     });
 
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnFailed = new Action<string>((errorMessage) =>
@@ -264,11 +280,31 @@ namespace ScriptGraphicHelper.ViewModels
                         MessageBox.ShowAsync(errorMessage);
                         this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                     });
+                }
+                
+            }
+            catch (Exception e)
+            {
+                ScreenshotHelperBridge.Dispose();
+                this.EmulatorInfo.Clear();
+                this.EmulatorInfo = ScreenshotHelperBridge.Init();
+                MessageBox.ShowAsync(e.ToString());
+            }
+            this.WindowCursor = new Cursor(StandardCursorType.Arrow);
 
+        }
+        public async void Device_Selected(int value)
+        {
+            try
+            {   
+                if (ScreenshotHelperBridge.State == LinkState.success)
+                {
+                    ScreenshotHelperBridge.Index = value;
                 }
                 else if (ScreenshotHelperBridge.State == LinkState.Starting)
                 {
                     ScreenshotHelperBridge.State = LinkState.success;
+                    ScreenshotHelperBridge.Index = value;
                 }
             }
             catch (Exception e)
@@ -283,19 +319,31 @@ namespace ScriptGraphicHelper.ViewModels
 
         }
 
+        public void LinkAutoJs_Click()
+        {
+            try
+            {
+                this.ResetEmulatorOptions_Click();
+                this.Emulator_Selected(0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.ShowAsync(ex.ToString());
+
+            }
+        }
         public void ScreenShot_Click()
         {
             try
             {
                 this.WindowCursor = new Cursor(StandardCursorType.Wait);
-                if (ScreenshotHelperBridge.Select == -1
-                    || ScreenshotHelperBridge.Index == -1 ||
-                    ScreenshotHelperBridge.Info[ScreenshotHelperBridge.Index].Value == "null")
+                if (ScreenshotHelperBridge.Index == -1)
                 {
-                    MessageBox.ShowAsync("请先配置 -> (模拟器/tcp/句柄)");
+                    MessageBox.ShowAsync("请链接设备");
                     this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                     return;
                 }
+                Console.WriteLine(">>>执行截图");
                 ScreenshotHelperBridge.ScreenShot();
             }
             catch (Exception ex)
@@ -309,6 +357,7 @@ namespace ScriptGraphicHelper.ViewModels
             if (ScreenshotHelperBridge.State == LinkState.Starting || ScreenshotHelperBridge.State == LinkState.success)
             {
                 this.EmulatorSelectedIndex = -1;
+                this.DeviceInfo.Clear();
             }
             ScreenshotHelperBridge.Dispose();
             this.EmulatorInfo.Clear();

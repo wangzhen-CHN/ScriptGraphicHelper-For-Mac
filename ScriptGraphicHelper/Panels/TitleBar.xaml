@@ -27,7 +27,7 @@
                 <ControlTemplate>
                     <Border
                         Name="PART_LayoutRoot"
-                        Cursor="hand"
+                        Cursor="Hand"
                         Width="{Binding Width, Mode=TwoWay}"
                         Padding="5">
                         <Grid>

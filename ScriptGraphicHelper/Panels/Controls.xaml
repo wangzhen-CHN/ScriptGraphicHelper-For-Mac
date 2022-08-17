@@ -42,7 +42,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Orientation="Vertical">
-                <StackPanel
+                <!-- <StackPanel
                     Orientation="Horizontal"
                     Margin="0,0,0,8"
                     ToolTip.Tip="模式配置">
@@ -77,7 +77,17 @@
                             </i:Interaction.Behaviors>
                         </ComboBox>
                     </Border>
-                </StackPanel>
+                </StackPanel> -->
+                <Button
+                    Name="LinkAutoJs"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    BorderBrush="#666666"
+                    Command="{Binding LinkAutoJs_Click}">
+                    链接AutoJs
+                </Button>
                 <Button
                     Name="ScreenShot"
                     Width="170"
@@ -133,7 +143,7 @@
                             <svg:SvgImage Source="/assets/sim.svg" />
                         </Image.Source>
                     </Image>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="相似度" />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="精度" />
                     <Border
                         Margin="9,0"
                         BorderBrush="#666666"
@@ -285,14 +295,14 @@
                         </TextBox>
                     </Border>
                 </StackPanel>
-                <Button
+                <!-- <Button
                     Width="170"
                     Cursor="Hand"
                     Margin="0,10,0,7"
                     HorizontalContentAlignment="Center"
                     Command="{Binding CutImg_Click}">
                     裁剪
-                </Button>
+                </Button> -->
                 <Button
                     Name="Create"
                     Width="170"
@@ -305,7 +315,7 @@
                 <TextBox
                     Name="CreateStr"
                     Width="170"
-                    Height="120"
+                    Height="100"
                     Margin="0,10,0,10"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -336,6 +346,18 @@
                     Command="{Binding Clear_Click}">
                     清空
                 </Button>
+                <Button
+                    Name="ResetEmulatorOptions"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,6"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding ResetEmulatorOptions_Click}">
+                    重置AutoJs链接
+                </Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding DeviceInfo[0], Mode=TwoWay}" />
+                </StackPanel>    
             </StackPanel>
         </ScrollViewer>
     </Panel>

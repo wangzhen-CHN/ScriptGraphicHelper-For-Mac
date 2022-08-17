@@ -36,7 +36,7 @@ namespace ScriptGraphicHelper.Views
 
             foreach (var address in this.Addresses)
             {
-                if (address.StartsWith("192.168"))
+                if (address.StartsWith("192.168."))
                 {
                     comboBox.SelectedItem = address;
                     break;

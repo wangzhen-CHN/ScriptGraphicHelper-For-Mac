@@ -71,7 +71,7 @@ function send() {
     stream = socket.getOutputStream();
 
     if (engine == null) {
-        var data = makePackData("screenShot_failed", "获取常驻截屏脚本对象失败, 请在图色助手重新连接aj!", null);
+        var data = makePackData("screenShot_failed", "获取截屏权限失败, 请重新连接!", null);
         stream.write(data);
         return;
     }
