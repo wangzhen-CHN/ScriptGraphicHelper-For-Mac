@@ -7,12 +7,15 @@
 > 只支持autojs方式链接
 
 <br/>
-<img src="./eg.jpg" height="600" alt="scrcpy" />
+<img src="./eg2x.jpg" width="800" alt="scrcpy" />
 
 ## 功能
 
 - AJ连接模式: 调用aj的tcp调试端口进行截图(需要安装autojs.pro 8, 并开启调试服务和悬浮窗)
 - 一键生成autojs比色代码
+- 一键生成autojs比色函数
+- 识别区域显示
+
 
 <br/>
 
