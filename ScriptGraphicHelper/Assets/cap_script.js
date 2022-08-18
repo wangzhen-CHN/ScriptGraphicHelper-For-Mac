@@ -57,7 +57,7 @@ events.on("send", function (remoteIP) {
             stream.write(data);
         }
         else {
-            var data = makePackData("screenShot_failed", "获取截图失败!", null);
+            var data = makePackData("screenShot_failed", "截图失败!", null);
             stream.write(data);
         }
     }
@@ -81,27 +81,26 @@ events.on("send", function (remoteIP) {
 
 let _engines = engines.all();
 
-if (app.versionName.startsWith("Pro 8")) {
+if (app.versionName.startsWith("Pro 8")||app.versionName.startsWith("Pro 9")) {
+    //自动授权截图
     threads.start(function () {
-        if (!requestScreenCapture()) {
-            alert("请求截图权限失败"); exit();
-        }
-        else {
-            toastLog("请求截图权限成功");
+        var beginBtn;
+        if (beginBtn = classNameContains("Button").textContains("立即开始").findOne(2000)) {
+            beginBtn.click();
         }
     });
+    sleep(1000);
+    if (!requestScreenCapture()) {
+        alert("请求截图权限失败"); 
+        exit();
+    }
+    else {
+        toastLog("请求截图权限成功");
+    }
+    threads.shutDownAll();//停止所有通过threads.start()启动的子线程
+
 }
-else if (app.versionName.startsWith("Pro 9")) {
-    threads.start(function () {
-        if (!requestScreenCapture()) {
-            alert("请求截图权限失败");
-            exit();
-        }
-        else {
-            toastLog("请求截图权限成功");
-        }
-    });
-}
+
 
 setInterval(() => { }, 1000);
 

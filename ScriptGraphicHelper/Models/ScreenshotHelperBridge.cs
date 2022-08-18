@@ -38,20 +38,6 @@ namespace ScriptGraphicHelper.Models
         public static ObservableCollection<string> Init()
         {
             Helpers = new List<BaseHelper>();
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Helpers.Add(new LdEmulatorHelper(0));
-                Helpers.Add(new LdEmulatorHelper(1));
-                Helpers.Add(new LdEmulatorHelper(2));
-                Helpers.Add(new LdEmulatorHelper(3));
-                try
-                {
-                    Helpers.Add(new HwndHelper());
-                }
-                catch { }
-            }
-
             Helpers.Add(new AJHelper());
 
             Result = new ObservableCollection<string>();

@@ -71,9 +71,6 @@
 		<AvaloniaXaml Include="Views\AJConfig.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</AvaloniaXaml>
-		<AvaloniaXaml Include="Views\HwndConfig.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</AvaloniaXaml>
 		<AvaloniaXaml Include="Views\ImgEditor.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</AvaloniaXaml>
@@ -112,9 +109,6 @@
 		</Compile>
 		<Compile Update="Views\Config.xaml.cs">
 			<DependentUpon>Config.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\HwndConfig.xaml.cs">
-			<DependentUpon>HwndConfig.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\MainWindow.xaml.cs" />
 		<Compile Update="Views\MessageBox.xaml.cs">

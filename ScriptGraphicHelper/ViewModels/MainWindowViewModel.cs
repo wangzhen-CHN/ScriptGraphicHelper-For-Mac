@@ -272,9 +272,9 @@ namespace ScriptGraphicHelper.ViewModels
                             this.TabControlSelectedIndex = this.TabItems.Count - 1;
                             this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                         });
-                        
                     });
-
+                    await Task.Delay(2000);
+                    this.ScreenShot_Click(); //自动截图
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnFailed = new Action<string>((errorMessage) =>
                     {
                         MessageBox.ShowAsync(errorMessage);

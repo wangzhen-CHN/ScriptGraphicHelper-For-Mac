@@ -216,7 +216,6 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                     {
                         this.OnFailed?.Invoke(data.Description ?? "未知错误");
                     }
-
                     stream.Close();
                     client.Close();
                 }
@@ -226,8 +225,10 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                 }
                 finally
                 {
-                    //回调
-                     this.server.BeginAcceptTcpClient(new AsyncCallback(ConnectCallback), this.server);
+                    if (this.server.Server.Connected)
+                    {
+                        this.server?.BeginAcceptTcpClient(new AsyncCallback(ConnectCallback), this.server);
+                    }
                     
                 }
             }
@@ -239,6 +240,7 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
             {
                 throw new Exception("tcp连接失效");
             }
+            this.server?.BeginAcceptTcpClient(new AsyncCallback(ConnectCallback), this.server);
             var sendCode = this.sendCode.Replace("let remoteIP;", $"let remoteIP = '{this.LocalIP}'");
             this.client.GetStream().Write(GetRunCommandBytes(sendCode, "send_script"));
         }
