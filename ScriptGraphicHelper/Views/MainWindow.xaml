@@ -142,11 +142,10 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Width="{Binding WindowWidth, Mode=TwoWay}" Background="#333333">
-                <Border Width="{Binding Width, Mode=TwoWay}"  Padding="10,5">
+                <Border Width="{Binding Width, Mode=TwoWay}"  Padding="20,5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="设备：" />
-                        <TextBlock Text="{Binding ConnectState, Mode=TwoWay}" />
-                        <TextBlock Text="{Binding DeviceInfo[0], Mode=TwoWay}" />
+                        <TextBlock Name="ConnectState" />
                     </StackPanel>
                 </Border>
             </StackPanel>

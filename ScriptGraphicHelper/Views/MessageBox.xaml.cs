@@ -5,6 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using System;
+using ScriptGraphicHelper.ViewModels;
 
 namespace ScriptGraphicHelper.Views
 {
@@ -47,7 +48,6 @@ namespace ScriptGraphicHelper.Views
         {
             this.Title = title;
             this.Message = msg;
-
             // this.ExtendClientAreaToDecorationsHint = true;
             // this.ExtendClientAreaTitleBarHeightHint = -1;
             // this.ExtendClientAreaChromeHints = Avalonia.Platform.ExtendClientAreaChromeHints.NoChrome;
@@ -72,7 +72,7 @@ namespace ScriptGraphicHelper.Views
             await Application.Current.Clipboard.SetTextAsync(this.Message);
             Close();
         }
-        private async void Close_Tapped(object sender, RoutedEventArgs e)
+        private void Close_Tapped(object sender, RoutedEventArgs e)
         {
             Close();
         }

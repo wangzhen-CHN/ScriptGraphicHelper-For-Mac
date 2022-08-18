@@ -9,7 +9,7 @@ namespace ScriptGraphicHelper.Views
 {
     public class AJConfig : Window
     {
-        private static string remoteAddress = "192.168.";
+        private static string remoteAddress = "192.168.1.4";
         public AJConfig()
         {
             InitializeComponent();
