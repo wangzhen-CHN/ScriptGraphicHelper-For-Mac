@@ -251,12 +251,13 @@ namespace ScriptGraphicHelper.ViewModels
                 {
                     this.WindowCursor = new Cursor(StandardCursorType.Wait);
                     ScreenshotHelperBridge.Changed(value);
+                    this.ConnectState = "连接中..."; //连接中
                     // 获取设备列表
                     this.DeviceInfo = await ScreenshotHelperBridge.Initialize();
                     this.getList(0);
                     // 选择设备
                     this.Device_Selected(0);
-                    ScreenshotHelperBridge.Select=0;
+                    ScreenshotHelperBridge.Select = 0;
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnSuccessed = new Action<Bitmap>((bitmap) =>
                     {
                         Dispatcher.UIThread.InvokeAsync(() =>
@@ -273,6 +274,7 @@ namespace ScriptGraphicHelper.ViewModels
                             this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                         });
                     });
+                    this.ConnectState = "已连接"; //已连接
                     await Task.Delay(2000);
                     this.ScreenShot_Click(); //自动截图
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnFailed = new Action<string>((errorMessage) =>
@@ -340,6 +342,8 @@ namespace ScriptGraphicHelper.ViewModels
                 if (ScreenshotHelperBridge.Index == -1)
                 {
                     MessageBox.ShowAsync("请链接设备");
+                    this.ConnectState = "连接失效";
+
                     this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                     return;
                 }
@@ -358,6 +362,7 @@ namespace ScriptGraphicHelper.ViewModels
             {
                 this.EmulatorSelectedIndex = -1;
                 this.DeviceInfo.Clear();
+                this.ConnectState = "未连接";
             }
             ScreenshotHelperBridge.Dispose();
             this.EmulatorInfo.Clear();
