@@ -274,7 +274,7 @@ namespace ScriptGraphicHelper.ViewModels
                             this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                         });
                     });
-                    this.ConnectStatus = "已连接"; //已连接
+                    this.ConnectStatus = "已连接 " + this.DeviceInfo[0]; //已连接
                     await Task.Delay(2000);
                     this.ScreenShot_Click(); //自动截图
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnFailed = new Action<string>((errorMessage) =>
