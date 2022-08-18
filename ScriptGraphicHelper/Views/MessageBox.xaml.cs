@@ -6,6 +6,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using System;
 using ScriptGraphicHelper.ViewModels;
+using ScriptGraphicHelper.View;
 
 namespace ScriptGraphicHelper.Views
 {
@@ -48,6 +49,8 @@ namespace ScriptGraphicHelper.Views
         {
             this.Title = title;
             this.Message = msg;
+            var a = new MainWindow();
+            a.SetConnectState("aaaaaaaaaa")
             // this.ExtendClientAreaToDecorationsHint = true;
             // this.ExtendClientAreaTitleBarHeightHint = -1;
             // this.ExtendClientAreaChromeHints = Avalonia.Platform.ExtendClientAreaChromeHints.NoChrome;

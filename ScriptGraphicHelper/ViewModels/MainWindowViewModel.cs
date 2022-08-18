@@ -251,7 +251,7 @@ namespace ScriptGraphicHelper.ViewModels
                 {
                     this.WindowCursor = new Cursor(StandardCursorType.Wait);
                     ScreenshotHelperBridge.Changed(value);
-                    this.ConnectState = "连接中..."; //连接中
+                    this.ConnectStatus = "连接中..."; //连接中
                     // 获取设备列表
                     this.DeviceInfo = await ScreenshotHelperBridge.Initialize();
                     this.getList(0);
@@ -274,7 +274,7 @@ namespace ScriptGraphicHelper.ViewModels
                             this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                         });
                     });
-                    this.ConnectState = "已连接"; //已连接
+                    this.ConnectStatus = "已连接"; //已连接
                     await Task.Delay(2000);
                     this.ScreenShot_Click(); //自动截图
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnFailed = new Action<string>((errorMessage) =>
@@ -295,7 +295,7 @@ namespace ScriptGraphicHelper.ViewModels
             this.WindowCursor = new Cursor(StandardCursorType.Arrow);
 
         }
-        public async void Device_Selected(int value)
+        public void Device_Selected(int value)
         {
             try
             {   
@@ -342,7 +342,7 @@ namespace ScriptGraphicHelper.ViewModels
                 if (ScreenshotHelperBridge.Index == -1)
                 {
                     MessageBox.ShowAsync("请链接设备");
-                    this.ConnectState = "连接失效";
+                    this.ConnectStatus = "连接失效";
 
                     this.WindowCursor = new Cursor(StandardCursorType.Arrow);
                     return;
@@ -362,7 +362,7 @@ namespace ScriptGraphicHelper.ViewModels
             {
                 this.EmulatorSelectedIndex = -1;
                 this.DeviceInfo.Clear();
-                this.ConnectState = "未连接";
+                this.ConnectStatus = "未连接";
             }
             ScreenshotHelperBridge.Dispose();
             this.EmulatorInfo.Clear();

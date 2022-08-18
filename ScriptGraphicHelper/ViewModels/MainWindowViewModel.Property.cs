@@ -85,11 +85,11 @@ namespace ScriptGraphicHelper.ViewModels
             set => this.RaiseAndSetIfChanged(ref this.emulatorInfo, value);
         }
         /** 0:未连接 1:已连接 2:连接中 3:连接失效 */
-        private string connectState = "未连接";
-        public string ConnectState
+        private string connectStatus = "未连接";
+        public string ConnectStatus
         {
-            get => this.connectState;
-            set => this.RaiseAndSetIfChanged(ref this.connectState, value);
+            get => this.connectStatus;
+            set => this.RaiseAndSetIfChanged(ref this.connectStatus, value);
         }
 
         private ObservableCollection<string> deviceInfo;
