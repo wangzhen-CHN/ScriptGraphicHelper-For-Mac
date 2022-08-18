@@ -44,8 +44,8 @@
     Margin="0,30,0,0"
     BorderBrush="#555"
     BorderThickness="0,1,0,0">
-        <Grid>
-            <Grid.ContextMenu>
+      <Grid RowDefinitions="*,Auto">
+        <Grid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Command="{Binding ResetEmulatorOptions_Click}" Header="重置模式选择" />
                     <MenuItem Command="{Binding Key_GetClipboardData}" Header="导入图片或数据" />
@@ -140,6 +140,15 @@
                         FontSize="14"
                         Text="{Binding PointColor, Mode=TwoWay}" />
                 </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Width="{Binding WindowWidth, Mode=TwoWay}" Background="#333333">
+                <Border Width="{Binding Width, Mode=TwoWay}"  Padding="10,5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="设备：" />
+                        <TextBlock Text="{Binding ConnectState, Mode=TwoWay}" />
+                        <TextBlock Text="{Binding DeviceInfo[0], Mode=TwoWay}" />
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Grid>
     </Border>

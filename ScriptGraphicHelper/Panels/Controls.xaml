@@ -355,11 +355,6 @@
                     Command="{Binding ResetEmulatorOptions_Click}">
                     重置链接
                 </Button>  
-                <StackPanel Margin="0,6" Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <TextBlock Text="设备：" />
-                    <TextBlock Text="{Binding ConnectState, Mode=TwoWay}" />
-                    <TextBlock Text="{Binding DeviceInfo[0], Mode=TwoWay}" />
-                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Panel>

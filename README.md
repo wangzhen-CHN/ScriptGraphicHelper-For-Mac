@@ -16,6 +16,9 @@
 - 一键生成autojs比色函数
 - 识别区域显示
 
+## 构建
+
+https://docs.avaloniaui.net/docs/distribution-publishing/macos
 
 <br/>
 
