@@ -115,7 +115,7 @@
                                                         </Style>
                                                         <Style Selector="CheckBox:checked Border#NormalRectangle">
                                                             <Setter Property="FocusAdorner" Value="{Binding Color, Converter={StaticResource color2Brush}}" />
-                                                            <Setter Property="Background" Value="#f1f1f1" />
+                                                            <Setter Property="Background" Value="#F5F5F5" />
                                                             <Setter Property="BorderBrush" Value="Transparent" />
                                                             <Setter Property="CornerRadius" Value="2" />
                                                         </Style>

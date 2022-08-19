@@ -19,7 +19,7 @@
     <UserControl.Styles>
         <Style Selector="Button">
             <Setter Property="FontWeight" Value="Medium" />
-            <Setter Property="Background" Value="#666666" />
+            <Setter Property="Background" Value="#4D4D4D" />
         </Style>
         <Style Selector="Button /template/ ContentPresenter">
             <Setter Property="CornerRadius" Value="3" />
@@ -83,8 +83,9 @@
                     Width="170"
                     Cursor="Hand"
                     Margin="0,6"
+                    Padding="0,8"
+                    BorderBrush="#777777"
                     HorizontalContentAlignment="Center"
-                    BorderBrush="#666666"
                     Command="{Binding LinkAutoJs_Click}">
                     链接设备
                 </Button>
@@ -94,7 +95,6 @@
                     Cursor="Hand"
                     Margin="0,6"
                     HorizontalContentAlignment="Center"
-                    BorderBrush="#666666"
                     Command="{Binding ScreenShot_Click}">
                     截图
                 </Button>
@@ -137,6 +137,36 @@
                 <StackPanel
                     Margin="0,6"
                     Orientation="Horizontal"
+                    ToolTip.Tip="生成格式">
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Source>
+                            <svg:SvgImage Source="/assets/format.svg" />
+                        </Image.Source>
+                    </Image>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="格 式" />
+                    <Border
+                        Margin="9,0"
+                        BorderBrush="#666666"
+                        BorderThickness="0,0,0,1"
+                        CornerRadius="0">
+                        <ComboBox
+                            x:Name="Format"
+                            Width="95"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="14"
+                            Items="{Binding FormatItems}"
+                            SelectedIndex="{Binding FormatSelectedIndex, Mode=TwoWay}" />
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                    Margin="0,6"
+                    Orientation="Horizontal"
                     ToolTip.Tip="相似度">
                     <Image Width="16" Height="16" Margin="0,0,5,0">
                         <Image.Source>
@@ -170,7 +200,7 @@
                         </ComboBox>
                     </Border>
                 </StackPanel>
-                <StackPanel
+                <!-- <StackPanel
                     Margin="0,6"
                     Orientation="Horizontal"
                     ToolTip.Tip="测试结果">
@@ -195,37 +225,8 @@
                             IsReadOnly="True"
                             Text="{Binding TestResult, Mode=TwoWay}" />
                     </Border>
-                </StackPanel>
-                <StackPanel
-                    Margin="0,6"
-                    Orientation="Horizontal"
-                    ToolTip.Tip="生成格式">
-                    <Image Width="16" Height="16" Margin="0,0,5,0">
-                        <Image.Source>
-                            <svg:SvgImage Source="/assets/format.svg" />
-                        </Image.Source>
-                    </Image>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="格 式" />
-                    <Border
-                        Margin="9,0"
-                        BorderBrush="#666666"
-                        BorderThickness="0,0,0,1"
-                        CornerRadius="0">
-                        <ComboBox
-                            x:Name="Format"
-                            Width="95"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Background="Transparent"
-                            BorderBrush="#666666"
-                            BorderThickness="0"
-                            FontSize="14"
-                            Items="{Binding FormatItems}"
-                            SelectedIndex="{Binding FormatSelectedIndex, Mode=TwoWay}" />
-                    </Border>
-                </StackPanel>
+                </StackPanel> -->
+
                 <StackPanel
                     Margin="0,6"
                     Orientation="Horizontal"
@@ -287,6 +288,7 @@
                         <TextBox
                             Name="Rect"
                             Width="95"
+                            IsReadOnly="True"
                             Background="Transparent"
                             BorderBrush="#666666"
                             BorderThickness="0"
@@ -303,15 +305,6 @@
                     Command="{Binding CutImg_Click}">
                     裁剪
                 </Button> -->
-                <Button
-                    Name="Create"
-                    Width="170"
-                    Cursor="Hand"
-                    Margin="0,10,0,7"
-                    HorizontalContentAlignment="Center"
-                    Command="{Binding Create_Click}">
-                    生成
-                </Button>
                 <TextBox
                     Name="CreateStr"
                     Width="170"
@@ -328,6 +321,15 @@
                     Text="{Binding CreateStr, Mode=TwoWay}"
                     TextWrapping="Wrap"
                     ToolTip.Tip="生成字符串" />
+                <Button
+                    Name="Create"
+                    Width="170"
+                    Cursor="Hand"
+                    Margin="0,10,0,7"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding Create_Click}">
+                    生成
+                </Button>
                 <Button
                     Name="CreateStrCopy"
                     Width="170"

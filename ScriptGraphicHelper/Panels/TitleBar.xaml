@@ -47,7 +47,7 @@
                                 VerticalAlignment="Center"
                                 FontSize="12"
                                 FontWeight="Regular"
-                                Foreground="#f1f1f1"
+                                Foreground="#F5F5F5"
                                 Text="{Binding Header}" />
                             <Button
                                 Name="Close_Btn"
@@ -108,17 +108,17 @@
         </Style>
 <!--
         <Style Selector="TabItem:selected:pointerover /template/ Border#PART_LayoutRoot">
-            <Setter Property="Background" Value="#f1f1f1" />
+            <Setter Property="Background" Value="#F5F5F5" />
             <Setter Property="TextBlock.Foreground" Value="{DynamicResource TabItemHeaderForegroundSelectedPointerOver}" />
         </Style>
 
         <Style Selector="TabItem:pressed /template/ Border#PART_LayoutRoot">
-            <Setter Property="Background" Value="#f1f1f1" />
+            <Setter Property="Background" Value="#F5F5F5" />
             <Setter Property="TextBlock.Foreground" Value="{DynamicResource TabItemHeaderForegroundUnselectedPressed}" />
         </Style>
 
         <Style Selector="TabItem:pressed /template/ Border#PART_LayoutRoot">
-            <Setter Property="Background" Value="#f1f1f1" />
+            <Setter Property="Background" Value="#F5F5F5" />
             <Setter Property="TextBlock.Foreground" Value="{DynamicResource TabItemHeaderForegroundSelectedPressed}" />
         </Style>
 

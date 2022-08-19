@@ -26,7 +26,7 @@
                 Name="Message"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Foreground="#f1f1f1"
+                Foreground="#F5F5F5"
                 TextWrapping="Wrap" />
         </ScrollViewer>
 <!-- 左上右下 -->
@@ -41,7 +41,7 @@
             Content="确认"
             Cursor="Hand"
             CornerRadius="3"
-            Foreground="#f1f1f1"
+            Foreground="#F5F5F5"
             Tapped="Close_Tapped">
                 确认
         </Button>
