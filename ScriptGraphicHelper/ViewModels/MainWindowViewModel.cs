@@ -164,7 +164,7 @@ namespace ScriptGraphicHelper.ViewModels
                         var point3 = EndPoint;
                         var point4 = new Point(EndPoint.X,this.StartPoint.Y);
                         this.RectBoxPoint = new List<Point>(){point1,point2,point3,point4,point1};
-                        this.RectBox_IsVisible = true;
+                        // this.RectBox_IsVisible = true;
                     }
                     else
                     {
@@ -266,7 +266,7 @@ namespace ScriptGraphicHelper.ViewModels
                             var item = new TabItem(this.Img);
                             item.Command = new Command((param) =>
                             {
-                                this.RectBox_IsVisible = false;
+                                // this.RectBox_IsVisible = false;
                                 this.TabItems.Remove(item);
                             });
                             this.TabItems.Add(item);
@@ -400,7 +400,7 @@ namespace ScriptGraphicHelper.ViewModels
                             item.Command = new Command((param) =>
                             {
                                 this.TabItems.Remove(item);
-                                this.RectBox_IsVisible=false;
+                                // this.RectBox_IsVisible=false;
                             });
                             this.TabItems.Add(item);
                             this.TabControlSelectedIndex = this.TabItems.Count - 1;
@@ -478,7 +478,7 @@ namespace ScriptGraphicHelper.ViewModels
                     item.Command = new Command((param) =>
                     {
                         this.TabItems.Remove(item);
-                        this.RectBox_IsVisible = false;
+                        // this.RectBox_IsVisible = false;
                     });
                     this.TabItems.Add(item);
                     this.TabControlSelectedIndex = this.TabItems.Count - 1;
@@ -657,7 +657,7 @@ namespace ScriptGraphicHelper.ViewModels
         {
             this.ColorInfos.Clear();
             this.DataGridHeight = 40;
-            this.RectBox_IsVisible = false;
+            // this.RectBox_IsVisible = false;
             this.CreateStr = string.Empty;
             this.Rect = string.Empty;
             this.TestResult = string.Empty;
@@ -785,7 +785,7 @@ namespace ScriptGraphicHelper.ViewModels
                     var item = new TabItem(this.Img);
                     item.Command = new Command((param) =>
                     {
-                        this.RectBox_IsVisible = false;
+                        // this.RectBox_IsVisible = false;
                         this.TabItems.Remove(item);
                     });
                     this.TabItems.Add(item);

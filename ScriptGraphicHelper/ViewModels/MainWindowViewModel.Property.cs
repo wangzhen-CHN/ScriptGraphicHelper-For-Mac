@@ -287,12 +287,12 @@ namespace ScriptGraphicHelper.ViewModels
             set => this.RaiseAndSetIfChanged(ref this.rectBoxPoint, value);
         }
 
-        private bool rectBox_IsVisible = false;
-        public bool RectBox_IsVisible
-        {
-            get => this.rectBox_IsVisible;
-            set => this.RaiseAndSetIfChanged(ref this.rectBox_IsVisible, value);
-        }
+        // private bool rectBox_IsVisible = false;
+        // public bool RectBox_IsVisible
+        // {
+        //     get => this.rectBox_IsVisible;
+        //     set => this.RaiseAndSetIfChanged(ref this.rectBox_IsVisible, value);
+        // }
 
         private Thickness findedPoint_Margin;
         public Thickness FindedPoint_Margin

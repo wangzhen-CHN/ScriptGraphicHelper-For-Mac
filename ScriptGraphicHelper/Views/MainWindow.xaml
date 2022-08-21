@@ -81,13 +81,13 @@
                     Stroke="Red"
                     StrokeThickness="2" />
             </Canvas>
-            <Canvas>
+            <!-- <Canvas>
                 <Polyline 
                     Points="{Binding RectBoxPoint}"
                     IsVisible="{Binding RectBox_IsVisible, Mode=TwoWay}" 
                     StrokeThickness="2" 
                     Stroke="Red" />
-            </Canvas>
+            </Canvas> -->
 
             <StackPanel
                 x:Name="Panel_Loupe"
