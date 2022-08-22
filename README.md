@@ -1,4 +1,8 @@
-# ScriptGraphicHelper For Mac
+<p align="center">
+   <img width="140" src="./ScriptGraphicHelper/Assets/ico.ico">
+</p>
+
+<h3 align="center">ScriptGraphicHelper For Mac</h3>
 
 **一款简单好用的图色助手,  快速生成多种脚本开发工具的图色格式代码**
 
