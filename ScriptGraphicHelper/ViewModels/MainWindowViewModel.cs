@@ -617,7 +617,7 @@ namespace ScriptGraphicHelper.ViewModels
             }
         }
 
-        public void Create_Click()
+       async public void Create_Click()
         {
             if (this.ColorInfos.Count > 0)
             {
@@ -637,6 +637,35 @@ namespace ScriptGraphicHelper.ViewModels
                 }
 
                 this.CreateStr = CreateColorStrHelper.Create(this.CurrentFormat.Name, this.ColorInfos, rect);
+                this.MessageInfo = "已复制";
+                await Task.Delay(3000);
+                this.MessageInfo = "";
+                CreateStr_Copy_Click();
+            }
+        }
+        async public void Create_Fuc_Click()
+        {
+            if (this.ColorInfos.Count > 0)
+            {
+                var rect = GetRange();
+
+                if (this.Rect.IndexOf("[") != -1)
+                {
+                    this.Rect = string.Format("[{0}]", rect.ToString());
+                }
+                else if (FormatConfig.GetFormat(this.FormatItems[this.formatSelectedIndex])!.AnchorIsEnabled is true)
+                {
+                    this.Rect = rect.ToString(2);
+                }
+                else
+                {
+                    this.Rect = rect.ToString();
+                }
+
+                this.CreateStr = CreateColorStrHelper.Create("自定义找色", this.ColorInfos, rect);
+                this.MessageInfo = "函数已复制";
+                await Task.Delay(3000);
+                this.MessageInfo = "";
                 CreateStr_Copy_Click();
             }
         }

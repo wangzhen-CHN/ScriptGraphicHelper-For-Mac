@@ -211,10 +211,10 @@ namespace ScriptGraphicHelper.Models
                         startPoint = colorInfo.Point;
                         var res = diyFormat.FirstColorFormat;
 
-                        var color = colorInfo.Color.R.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.B.ToString("x2");
+                        var color ="#" + colorInfo.Color.R.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.B.ToString("x2");
                         if (diyFormat.IsBGR)
                         {
-                            color = colorInfo.Color.B.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.R.ToString("x2");
+                            color = "#" + colorInfo.Color.B.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.R.ToString("x2");
                         }
 
                         if (res.IndexOf("{color}") != -1)
@@ -230,10 +230,10 @@ namespace ScriptGraphicHelper.Models
 
                         var res = diyFormat.FollowColorFormat;
 
-                        var color = colorInfo.Color.R.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.B.ToString("x2");
+                        var color = "#" + colorInfo.Color.R.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.B.ToString("x2");
                         if (diyFormat.IsBGR)
                         {
-                            color = colorInfo.Color.B.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.R.ToString("x2");
+                            color = "#" + colorInfo.Color.B.ToString("x2") + colorInfo.Color.G.ToString("x2") + colorInfo.Color.R.ToString("x2");
                         }
 
                         if (res.IndexOf("{x}") != -1)

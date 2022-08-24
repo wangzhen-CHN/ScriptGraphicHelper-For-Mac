@@ -105,6 +105,12 @@ namespace ScriptGraphicHelper.ViewModels
             get => this.titleBarWidth;
             set => this.RaiseAndSetIfChanged(ref this.titleBarWidth, value);
         }
+        private string messageInfo;
+        public string MessageInfo
+        {
+            get => this.messageInfo;
+            set => this.RaiseAndSetIfChanged(ref this.messageInfo, value);
+        }
 
         private TabItems<TabItem> tabItems = new();
         public TabItems<TabItem> TabItems

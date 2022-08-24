@@ -1,8 +1,9 @@
 {
   "ImportInfo": "dm",
-  "RangeFormat": "{startX},{startY},{endX},{endY}",
+  "RangeFormat": "{startX},{startY},{width},{height}",
   "FirstColorFormat": "{color}",
-  "FollowColorFormat": "{x}|{y}|{color}",
-  "FindStrFormat": "new array({ImportInfo},\"{range}\",\"{firstColorStr}\",\"{followColorStr}\",0.9,1)",
+  "FollowColorFormat": "[{x},{y},\"{color}\"]",
+  "FindStrFormat":"function (flag) { \n const img = captureScreen() \n const point = images.findMultiColors( img,\"{firstColorStr}\",[{followColorStr}],{ region: [{range}] })\n if (point) { \n    console.log(\"找到颜色，坐标为(\" + point.x + \", \" + point.y + \")\")\n     flag && click(point.x, point.y) \n } else { \n     console.log(\"没找到\") \n } \n return point \n },",
   "CompareStrFormat": "new array({ImportInfo},\"{colorStr}\",0.9)"
 }
+
